@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.CheckMenuItem?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.web.WebView?>
+
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="forevernote.Controller">
+   <center>
+      <WebView fx:id="browser" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </center>
+   <top>
+      <VBox>
+         <children>
+             <MenuBar fx:id="menuBar" styleClass="menu-Background" stylesheets="@stylesheet.css">
+                 <menus>
+                     <Menu text="File">
+                         <items>
+                             <MenuItem onAction="#actionNewNote" text="New _Note">
+                                 <accelerator>
+                                     <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                                 </accelerator>
+                             </MenuItem>
+                             <MenuItem onAction="#actionNewChat" text="New _Chat">
+                           <accelerator>
+                              <KeyCodeCombination alt="DOWN" code="C" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                             <MenuItem onAction="#actionNewTag" text="New _Tag">
+                           <accelerator>
+                              <KeyCodeCombination alt="DOWN" code="T" control="UP" meta="UP" shift="DOWN" shortcut="UP" />
+                           </accelerator></MenuItem>
+                             <MenuItem onAction="#actionNewNotebook" text="New Note_book">
+                           <accelerator>
+                              <KeyCodeCombination alt="DOWN" code="N" control="UP" meta="UP" shift="DOWN" shortcut="UP" />
+                           </accelerator></MenuItem>
+                             <MenuItem disable="true" text="New _Local Notebook..." visible="false" />
+                             <MenuItem disable="true" text="New Saved _Search..." visible="false" />
+                             <SeparatorMenuItem />
+                             <MenuItem disable="true" text="_Import" visible="false" />
+                             <MenuItem disable="true" text="_Export" visible="false" />
+                             <SeparatorMenuItem visible="false" />
+                             <MenuItem onAction="#actionAttachFiles" text="Attach _Files">
+                           <accelerator>
+                              <KeyCodeCombination alt="DOWN" code="A" control="UP" meta="UP" shift="DOWN" shortcut="UP" />
+                           </accelerator></MenuItem>
+                             <MenuItem disable="true" text="Sa_ve Attachments..." visible="false" />
+                             <SeparatorMenuItem />
+                             <MenuItem disable="true" text="_Print..." visible="false" />
+                             <MenuItem disable="true" text="P_rint Preview..." visible="false" />
+                             <MenuItem disable="true" text="Page Set_up..." visible="false" />
+                             <SeparatorMenuItem disable="true" visible="false" />
+                             <MenuItem disable="true" text="_Add Another User..." visible="false" />
+                             <SeparatorMenuItem disable="true" visible="false" />
+                        <CheckMenuItem fx:id="checkMenuSignedInUser" selected="true" text="[username]" />
+                             <MenuItem fx:id="signOut" onAction="#actionSignOut" text="Sign _out [user]" />
+                             <SeparatorMenuItem />
+                             <MenuItem onAction="#actionExit" text="E_xit" />
+                         </items>
+                     </Menu>
+                     <Menu text="Edit">
+                         <items>
+                             <MenuItem onAction="#actionUndo" text="_Undo           Ctrl+Z" />
+                             <MenuItem disable="true" onAction="#actionRedo" text="_Redo           Ctrl+Y" visible="false" />
+                             <SeparatorMenuItem disable="true" visible="false" />
+                             <MenuItem onAction="#actionCut" text="Cu_t              Ctrl+X" />
+                             <MenuItem onAction="#actionCopy" text="_Copy           Ctrl+C" />
+                             <MenuItem onAction="#actionPaste" text="_Paste           Ctrl+V" />
+                             <MenuItem disable="true" text="Paste and _Match Style" visible="false" />
+                             <SeparatorMenuItem />
+                             <MenuItem onAction="#actionDelete" text="_Delete         Delete" />
+                        <CheckMenuItem fx:id="checkMenuSelectAll" onAction="#actionSelectAll" text="Select _All     Ctrl+A" />
+                             <SeparatorMenuItem disable="true" visible="false" />
+                             <MenuItem disable="true" text="_Find and Replace" visible="false" />
+                             <MenuItem disable="true" text="Check _Spelling..." visible="false" />
+                         </items>
+                     </Menu>
+                     <Menu text="View">
+                         <items>
+                             <MenuItem onAction="#actionShortcuts" text="_Shortcuts">
+                           <accelerator>
+                              <KeyCodeCombination alt="DOWN" code="S" control="UP" meta="UP" shift="DOWN" shortcut="UP" />
+                           </accelerator></MenuItem>
+                             <SeparatorMenuItem />
+                        <CheckMenuItem onAction="#actionLeftPanel" selected="true" text="_Left Panel">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="F10" control="ANY" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </CheckMenuItem>
+                        <CheckMenuItem fx:id="checkMenuNoteList" onAction="#actionNoteList" selected="true" text="_Note List">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="F11" control="ANY" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </CheckMenuItem>
+                        <CheckMenuItem fx:id="checkMenuNotePanel" onAction="#actionNotePanel" selected="true" text="N_ote Panel">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="F12" control="ANY" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </CheckMenuItem>
+                             <MenuItem onAction="#actionTagsView" text="_Tags View">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="T" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                             <MenuItem onAction="#actionQuickSearch" text="_Quick Search">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="Q" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                             <MenuItem onAction="#actionWorkChat" text="_Work Chat">
+                           <accelerator>
+                              <KeyCodeCombination alt="DOWN" code="W" control="UP" meta="UP" shift="DOWN" shortcut="UP" />
+                           </accelerator></MenuItem>
+                             <SeparatorMenuItem />
+                             <MenuItem disable="true" text="Search _Information" visible="false" />
+                        <CheckMenuItem fx:id="checkMenuEditingToolbar" onAction="#actionEditingToolbar" selected="true" text="_Editing Toolbar">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="F8" control="ANY" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </CheckMenuItem>
+                             <MenuItem disable="true" text="St_atus Bar" visible="false" />
+                         </items>
+                     </Menu>
+                     <Menu text="Note">
+                         <items>
+                             <MenuItem onAction="#actionOpenInANewWindow" text="_Open In a New Window">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="ENTER" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                             <SeparatorMenuItem />
+                             <MenuItem disable="true" text="_Present" visible="false" />
+                             <MenuItem disable="true" text="Present on Another Screen" visible="false" />
+                             <SeparatorMenuItem disable="true" visible="false" />
+                             <MenuItem disable="true" text="_Tag..." visible="false" />
+                        <Menu text="Share">
+                          <items>
+                              <CheckMenuItem fx:id="checkMenuShareNote" onAction="#actionShareNote" text="S_hare Note" />
+                              <MenuItem onAction="#actionCopyShareURL" text="Copy Share _URL" />
+                              <Menu text="_Social">
+                                <items>
+                                  <MenuItem onAction="#actionPostToFacebook" text="Post to _Facebook" />
+                                    <CheckMenuItem fx:id="checkMenuPostToTwitter" onAction="#actionPostToTwitter" text="Post to _Twitter" />
+                                    <MenuItem disable="true" onAction="#actionPostToLinkedIn" text="Post to _LinkedIn" />
+                                </items>
+                              </Menu>
+                              <MenuItem onAction="#actionSendACopy" text="S_end a Copy" />
+                              <MenuItem onAction="#actionModifySharing" text="_Modify Sharing" />
+                          </items>
+                        </Menu>
+                             <MenuItem onAction="#actionCopyNoteLink" text="Copy Note _Link">
+                           <accelerator>
+                              <KeyCodeCombination alt="DOWN" code="L" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                             <SeparatorMenuItem />
+                             <MenuItem disable="true" text="_Copy to Notebook..." visible="false" />
+                             <MenuItem disable="true" text="_Duplicate Note" visible="false" />
+                        <CheckMenuItem fx:id="checkMenuMoveToNotebook" onAction="#actionMoveToNotebook" text="Mo_ve to Notebook">
+                           <accelerator>
+                              <KeyCodeCombination alt="DOWN" code="M" control="UP" meta="UP" shift="DOWN" shortcut="UP" />
+                           </accelerator>
+                        </CheckMenuItem>
+                             <SeparatorMenuItem disable="true" visible="false" />
+                             <MenuItem onAction="#actionMoveNoteToTrash" text="Mov_e Note to Trash" />
+                             <MenuItem disable="true" text="_Merge Notes" visible="false" />
+                             <SeparatorMenuItem />
+                        <MenuItem onAction="#actionSetReminder" text="Set _Reminder" />
+                        <MenuItem onAction="#actionAddShortcut" text="_Add Shortcut" />
+                        <MenuItem onAction="#actionNoteInformation" text="Note _Information" />
+                             <MenuItem onAction="#actionNoteHistory" text="Note _History" />
+                             <MenuItem disable="true" text="_Word and Resource Counts" visible="false" />
+                         </items>
+                     </Menu>
+                     <Menu text="Format">
+                         <items>
+                        <Menu text="_Font">
+                          <items>
+                              <MenuItem onAction="#actionFontStyle" text="S_tyle" />
+                            <MenuItem onAction="#actionFontSize" text="_Size" />
+                              <CheckMenuItem fx:id="checkMenuColor" onAction="#actionFontColor" text="_Color" />
+                          </items>
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="D" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </Menu>
+                        <Menu text="_Paragraph">
+                          <items>
+                              <CheckMenuItem fx:id="checkMenuLeft" onAction="#actionParagraphLeft" text="_Left">
+                                 <accelerator>
+                                    <KeyCodeCombination alt="UP" code="L" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                                 </accelerator>
+                              </CheckMenuItem>
+                              <MenuItem onAction="#actionParagraphCenter" text="_Center">
+                                 <accelerator>
+                                    <KeyCodeCombination alt="UP" code="E" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                                 </accelerator>
+                              </MenuItem>
+                              <MenuItem onAction="#actionParagraphRight" text="_Right">
+                                 <accelerator>
+                                    <KeyCodeCombination alt="UP" code="R" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                                 </accelerator>
+                              </MenuItem>
+                              <MenuItem disable="true" text="_Justify" visible="false">
+                                 <accelerator>
+                                    <KeyCodeCombination alt="UP" code="J" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                                 </accelerator>
+                              </MenuItem>
+                              <SeparatorMenuItem />
+                              <MenuItem onAction="#actionParagraphIncreaseIndentation" text="_Increase Indentation">
+                                 <accelerator>
+                                    <KeyCodeCombination alt="UP" code="M" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                                 </accelerator>
+                              </MenuItem>
+                              <MenuItem onAction="#actionParagraphDecreaseIndentation" text="_Decrease Indentation">
+                                 <accelerator>
+                                    <KeyCodeCombination alt="UP" code="M" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                                 </accelerator>
+                              </MenuItem>
+                              <SeparatorMenuItem />
+                              <MenuItem disable="true" text="Increase _Font Size" visible="false">
+                                 <accelerator>
+                                    <KeyCodeCombination alt="UP" code="PERIOD" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                                 </accelerator>
+                              </MenuItem>
+                              <MenuItem disable="true" text="Decrease Font _Size" visible="false">
+                                 <accelerator>
+                                    <KeyCodeCombination alt="UP" code="COMMA" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                                 </accelerator>
+                              </MenuItem>
+                              <SeparatorMenuItem disable="true" visible="false" />
+                              <MenuItem onAction="#actionParagraphBulletedList" text="_Bulleted List">
+                                 <accelerator>
+                                    <KeyCodeCombination alt="DOWN" code="B" control="UP" meta="UP" shift="DOWN" shortcut="UP" />
+                                 </accelerator>
+                              </MenuItem>
+                              <MenuItem onAction="#actionParagraphNumberedList" text="_Numbered List">
+                                 <accelerator>
+                                    <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                                 </accelerator>
+                              </MenuItem>
+                          </items>
+                        </Menu>
+                        <Menu text="_Style">
+                          <items>
+                              <CheckMenuItem fx:id="checkMenuBold" onAction="#actionStyleBold" text="_Bold">
+                                 <accelerator>
+                                    <KeyCodeCombination alt="UP" code="B" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                                 </accelerator>
+                              </CheckMenuItem>
+                              <MenuItem onAction="#actionStyleItalic" text="_Italic">
+                                 <accelerator>
+                                    <KeyCodeCombination alt="UP" code="I" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                                 </accelerator>
+                              </MenuItem>
+                              <MenuItem onAction="#actionStyleUnderline" text="_Underline">
+                                 <accelerator>
+                                    <KeyCodeCombination alt="UP" code="U" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                                 </accelerator>
+                              </MenuItem>
+                              <MenuItem onAction="#actionStyleStrikethrough" text="_Strikethrough">
+                                 <accelerator>
+                                    <KeyCodeCombination alt="UP" code="T" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                                 </accelerator>
+                              </MenuItem>
+                              <MenuItem disable="true" text="_Highlight" visible="false">
+                                 <accelerator>
+                                    <KeyCodeCombination alt="UP" code="H" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                                 </accelerator>
+                              </MenuItem>
+                              <MenuItem onAction="#actionStyleCodeBlock" text="Code B_lock">
+                                 <accelerator>
+                                    <KeyCodeCombination alt="UP" code="L" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                                 </accelerator>
+                              </MenuItem>
+                              <MenuItem onAction="#actionStyleSuperscript" text="Su_perscript">
+                                 <accelerator>
+                                    <KeyCodeCombination alt="UP" code="UP" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                                 </accelerator>
+                              </MenuItem>
+                              <MenuItem onAction="#actionStyleSubscript" text="Subs_cript">
+                                 <accelerator>
+                                    <KeyCodeCombination alt="UP" code="DOWN" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                                 </accelerator>
+                              </MenuItem>
+                          </items>
+                        </Menu>
+                        <CheckMenuItem fx:id="checkMenuInsertTable" onAction="#actionInsertTable" text="Insert _Table" />
+                             <SeparatorMenuItem />
+                             <MenuItem onAction="#actionInsertHorizontalRule" text="Insert _Horizontal Rule">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="MINUS" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                             <MenuItem onAction="#actionInsertCheckBox" text="Insert _Checkbox" />
+                        <Menu text="Insert _Hyperlink">
+                          <items>
+                            <MenuItem onAction="#actionHyperlinkAdd" text="_Add">
+                                 <accelerator>
+                                    <KeyCodeCombination alt="UP" code="K" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                                 </accelerator>
+                              </MenuItem>
+                              <CheckMenuItem fx:id="checkMenuEditHyperlink" onAction="#actionHyperlinkEdit" text="_Edit">
+                                 <accelerator>
+                                    <KeyCodeCombination alt="DOWN" code="E" control="UP" meta="UP" shift="DOWN" shortcut="UP" />
+                                 </accelerator>
+                              </CheckMenuItem>
+                              <MenuItem onAction="#actionHyperLinkRemove" text="_Remove">
+                                 <accelerator>
+                                    <KeyCodeCombination alt="DOWN" code="R" control="UP" meta="UP" shift="DOWN" shortcut="UP" />
+                                 </accelerator>
+                              </MenuItem>
+                          </items>
+                        </Menu>
+                             <MenuItem disable="true" text="_Encrypt Selected Text..." visible="false" />
+                             <SeparatorMenuItem />
+                             <MenuItem disable="true" text="_Simplify Formatting" visible="false" />
+                             <MenuItem onAction="#actionRemoveFormatting" text="_Remove Formatting">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="SPACE" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                             <SeparatorMenuItem disable="true" visible="false" />
+                             <MenuItem disable="true" text="_Zoom" visible="false" />
+                         </items>
+                     </Menu>
+                     <Menu text="Tools">
+                         <items>
+                        <CheckMenuItem fx:id="checkMenuSync" onAction="#actionSync" text="_Sync/Reload Page">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="F9" control="ANY" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </CheckMenuItem>
+                             <SeparatorMenuItem />
+                             <MenuItem disable="true" text="_Options" visible="false" />
+                             <MenuItem onAction="#actionAccountInfo" text="_Account Info" />
+                             <MenuItem disable="true" text="_Import Folders..." visible="false" />
+                             <SeparatorMenuItem disable="true" visible="false" />
+                             <MenuItem disable="true" text="Customize _Toolbar" visible="false" />
+                         </items>
+                     </Menu>
+                     <Menu text="Help">
+                         <items>
+                        <CheckMenuItem fx:id="checkMenuHelpAndLearning" onAction="#actionHelpAndLearning" text="_Help &amp; Learning">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="F1" control="ANY" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </CheckMenuItem>
+                             <MenuItem onAction="#actionGettingStartedGuide" text="_Getting Started Guide" />
+                             <MenuItem disable="true" text="_Explore Evernote" visible="false" />
+                             <MenuItem onAction="#actionRateEvernote" text="_Rate" />
+                             <SeparatorMenuItem />
+                             <MenuItem onAction="#actionGoToMyAccountPage" text="Go to _My Account Page" />
+                             <SeparatorMenuItem />
+                             <MenuItem onAction="#actionCheckForUpdates" text="_Check for Updates" />
+                             <MenuItem disable="true" text="Release _Notes" />
+                             <SeparatorMenuItem />
+                             <MenuItem disable="true" text="Activity _Log" visible="false" />
+                             <SeparatorMenuItem disable="true" visible="false" />
+                             <MenuItem onAction="#actionAbout" text="_About" />
+                         </items>
+                     </Menu>
+                 </menus>
+             </MenuBar>
+            <Separator maxHeight="1.0" minHeight="1.0" prefHeight="1.0" styleClass="separator-color" stylesheets="@stylesheet.css" />
+            <ButtonBar nodeOrientation="RIGHT_TO_LEFT" styleClass="menu-Background" stylesheets="@stylesheet.css">
+              <buttons>
+                  <Button id="whiteBackgroundButtons" fx:id="syncButton" contentDisplay="RIGHT" mnemonicParsing="false" styleClass="button-Sync" stylesheets="@stylesheet.css" text="Sync/Reload">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets bottom="3.0" top="2.0" />
+                     </padding></Button>
+                  <Button id="whiteBackgroundButtons" fx:id="allNotesButton" contentDisplay="RIGHT" mnemonicParsing="false" styleClass="button-allNotes" stylesheets="@stylesheet.css" text="All Notes">
+                     <padding>
+                        <Insets bottom="2.0" />
+                     </padding></Button>
+                <Button id="blueBackgroundButtons" fx:id="newNoteButton" contentDisplay="RIGHT" mnemonicParsing="false" styleClass="button-newNote" stylesheets="@stylesheet.css" text="New Note">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </Button>
+              </buttons>
+            </ButtonBar>
+            <Separator layoutX="10.0" layoutY="35.0" maxHeight="0.0" minHeight="0.0" prefHeight="0.0" styleClass="separator-color" stylesheets="@stylesheet.css" />
+         </children>
+      </VBox>
+   </top>
+   <left>
+      <TreeView fx:id="treeView" prefHeight="200.0" prefWidth="200.0" stylesheets="@stylesheet.css" BorderPane.alignment="CENTER" />
+   </left>
+</BorderPane>

@@ -1,0 +1,56 @@
+
+/* Menu background */
+.menu-Background {
+    -fx-background-color: #fefefe;
+}
+
+/* Separator at the top of border pane between menu bar and button bar */
+.separator-color {
+    -fx-background-color: #cccccc;
+}
+
+/* New note button */
+.button-newNote {
+    -fx-background-color: #2179bf;
+    -fx-text-fill: #FFFFFF;
+    -fx-background-radius: 2;
+    -fx-graphic: url("http://i.imgur.com/qd3gD92.png");
+}
+
+/* All notes button */
+.button-allNotes {
+    -fx-background-color: #fefefe;
+    -fx-graphic: url("http://i.imgur.com/HMj7IjB.png");
+}
+
+/* Sync button */
+.button-Sync {
+    -fx-background-color: #fefefe;
+    -fx-graphic: url("http://i.imgur.com/HAi2z7f.png");
+}
+
+/* Tree view and tree items*/
+.tree-view .tree-cell {
+    -fx-background-color: #202e3b ;
+    -fx-text-fill: #d4dce2 ;
+}
+
+/* Expansion arrows */
+.tree-cell > .tree-disclosure-node > .arrow  {
+    -fx-background-color: #2dbe60;
+}
+
+/* Hover effect for buttons with a white background */
+#whiteBackgroundButtons:hover {
+    -fx-background-color: #e3f1f9;
+}
+
+/* Hover effect for buttons with a blue background */
+#blueBackgroundButtons:hover {
+    -fx-background-color: #228ee0;
+}
+
+/* Effect for clicking on a button */
+.button:pressed {
+    -fx-translate-y: 1;
+}
