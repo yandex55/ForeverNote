@@ -5,9 +5,13 @@ Open-source Evernote application for Linux, with ability to run on Windows & Mac
 [v1.0 Installers and Jar](https://sourceforge.net/projects/forevernote/files/)
 
 ## Features 
-- Most of the functionality of official Windows & Mac desktop clients
+- Most of the functionality of official Windows & Mac Evernote desktop clients
 - GUI similar to official clients
-- Stays in tray upon exit
+- Stays in tray upon closing
 - Saves username for next login
+- And more
 
 ## Screenshots
+![alt tag](https://github.com/milan102/ForeverNote/blob/master/sample1.png)
+![alt tag](https://github.com/milan102/ForeverNote/blob/master/sample2.png)
+![alt tag](https://github.com/milan102/ForeverNote/blob/master/sample3.png)
