@@ -9,7 +9,7 @@ Open-source Evernote application for Linux, with ability to run on Windows & Mac
 - GUI similar to official clients
 - Stays in tray upon closing
 - Saves username for next login
-- And more
+- And more...
 
 ## Screenshots
 ![alt tag](https://github.com/milan102/ForeverNote/blob/master/sample1.png)
