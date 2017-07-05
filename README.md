@@ -4,6 +4,9 @@ Open-source Evernote application for Linux, with ability to run on Windows & Mac
 
 [Download v1.0 Installers and Jar here](https://sourceforge.net/projects/forevernote/files/)
 
+## New Release Notes
+
+
 ## Features 
 - Most of the functionality of official Windows & Mac Evernote desktop clients
 - GUI similar to official clients
