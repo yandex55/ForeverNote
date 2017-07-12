@@ -1,9 +1,10 @@
 # ForeverNote
 
-Open-source Evernote application for Linux, with ability to run on Windows & Mac. Uses EverNote Web, created with JavaFX.
+Open-source Evernote application for Linux, with ability to run on Windows & Mac. Uses Evernote Web, created with JavaFX.
 
 [Download v1.0 Installers and Jar here](https://sourceforge.net/projects/forevernote/files/)
 
+## Current Version: 1,0
 ## New Release Notes
 
 
