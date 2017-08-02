@@ -3,10 +3,20 @@
 Open-source Evernote application for Linux, with ability to run on Windows & Mac. Uses Evernote Web, created with JavaFX.
 
 
-## Current Version: 1.0
+## Current Version: 1.3
 [Download v1.0 Installers and Jar here](https://sourceforge.net/projects/forevernote/files/)
-## New Release Notes
 
+## New Release Notes
+- Fixed clicking on notebooks on the left panel and creating new notebooks
+- Added a feature to hide the search bar after performing a search
+- Fixed opening URL's in the user's default browser
+- Fixed viewing note history
+- Added release notes
+- Added option to contact developer (me)
+- Added update notifications
+
+## Known Issues
+- Pasting is buggy
 
 ## Features 
 - Most of the functionality of official Windows & Mac Evernote desktop clients
