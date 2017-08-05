@@ -4,7 +4,7 @@ Open-source Evernote application for Linux, with ability to run on Windows & Mac
 
 
 ## Current Version: 1.3
-[Download v1.0 Installers and Jar here](https://sourceforge.net/projects/forevernote/files/)
+[Download Installers and Jar files here](https://sourceforge.net/projects/forevernote/files/)
 
 ## New Release Notes
 - Fixed clicking on notebooks on the left panel and creating new notebooks
