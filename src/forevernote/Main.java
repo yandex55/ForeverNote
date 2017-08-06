@@ -13,6 +13,7 @@ import javafx.stage.Stage;
  * Class that starts JavaFX Stage, main application
  */
 public class Main extends Application {
+    private CheckUpdates checkUpdates;
 
     /**
      * Loads fxml file and sets stage parameters before showing
@@ -28,6 +29,7 @@ public class Main extends Application {
         Platform.setImplicitExit(false);
         new FXSystemTray(primaryStage);
         primaryStage.show();
+        checkUpdates.isUpdateAvailable();
     }
 
     /**

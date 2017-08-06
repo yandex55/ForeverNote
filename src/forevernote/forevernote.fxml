@@ -117,6 +117,11 @@
                               <KeyCodeCombination alt="UP" code="Q" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                            </accelerator>
                         </MenuItem>
+                        <MenuItem onAction="#actionAllNotes" text="_Hide Search">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="H" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
                              <MenuItem onAction="#actionWorkChat" text="_Work Chat">
                            <accelerator>
                               <KeyCodeCombination alt="DOWN" code="W" control="UP" meta="UP" shift="DOWN" shortcut="UP" />
@@ -363,7 +368,8 @@
                              <MenuItem onAction="#actionGoToMyAccountPage" text="Go to _My Account Page" />
                              <SeparatorMenuItem />
                              <MenuItem onAction="#actionCheckForUpdates" text="_Check for Updates" />
-                             <MenuItem disable="true" text="Release _Notes" />
+                             <MenuItem onAction="#actionReleaseNotes" text="Release _Notes" />
+                        <MenuItem onAction="#actionContactDeveloper" text="Contact Developer" />
                              <SeparatorMenuItem />
                              <MenuItem disable="true" text="Activity _Log" visible="false" />
                              <SeparatorMenuItem disable="true" visible="false" />

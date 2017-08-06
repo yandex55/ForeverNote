@@ -10,6 +10,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.web.PopupFeatures;
 import javafx.scene.web.WebEngine;
@@ -55,6 +57,7 @@ public class Controller {
     private static WebView webView2;
     private Notebooks notebooks;
     private NotebookStructure notebookStructure;
+    private CheckUpdates checkUpdates;
     private int numberOfSuccessfulRuns;
 
     /**
@@ -68,11 +71,13 @@ public class Controller {
 
     /**
      * Hides unnecessary components on loading screen
+     * Disable the buggy right-click context menu because cut/copy/paste doesn't work
      * Handles links opened in a new tab
      * Loads sign-in page
      */
     private void setStartingConditions() {
         webEngine = browser.getEngine();
+        browser.setContextMenuEnabled(false);
         setVisibleTopAndLeftBorderPane(false);
         handlePopupLinks();
         webEngine.load("https://www.evernote.com/Login.action");
@@ -223,10 +228,10 @@ public class Controller {
      * @param notebookName
      */
     private void searchForNotebook(String notebookName) {
-        JavascriptCode.clickById(webEngine, "gwt-debug-Sidebar-notebooksButton");
+        webEngine.executeScript("document.querySelectorAll(\"[id*=notebooksButton]\")[0].click()");
         webEngine.executeScript("document.getElementById(\"gwt-debug-NotebooksDrawer-drawerFilter-textBox\").value = \"" + notebookName + "\";");
-        JavascriptCode.clickById(webEngine, "gwt-debug-Sidebar-notebooksButton");
-        JavascriptCode.clickById(webEngine, "gwt-debug-Sidebar-notebooksButton");
+        webEngine.executeScript("document.querySelectorAll(\"[id*=notebooksButton]\")[0].click()");
+        webEngine.executeScript("document.querySelectorAll(\"[id*=notebooksButton]\")[0].click()");
     }
 
     /**
@@ -237,11 +242,12 @@ public class Controller {
      */
     private void clickOnNotebookInResults(String notebookName) {
         if (notebookName.equals("Trash")) {
-            JavascriptCode.clickByClass(webEngine, "GOKB433CBD.GOKB433CATB");
+            webEngine.executeScript("document.querySelectorAll(\"[class*=qa-trash]\")[0].click()");
         }
         else {
-            webEngine.executeScript("var notebooks = document.querySelectorAll(\".GOKB433CATB.GOKB433CHD.qa-name\");" +
-                    "for (var i = 0; i < notebooks.length; ++i) {" +
+            webEngine.executeScript("var drawer = document.querySelectorAll(\"[id*=DrawerView]\")[0];" +
+                    "var notebooks = drawer.querySelectorAll(\"[class*=qa-name]\");" +
+                    "for (var i = 0; i < notebooks.length; i++) {" +
                     "if (notebooks[i].innerHTML == \"" + notebookName + "\") {" +
                     "notebooks[i].click();" + "}}"
             );
@@ -392,7 +398,9 @@ public class Controller {
      * Paste shortcut initiated only if manually clicked in the menu
      */
     public void actionPaste() {
-        KeyboardInput.robotDoubleKeyPress(KeyEvent.VK_CONTROL, KeyEvent.VK_V);
+        //KeyboardInput.robotDoubleKeyPress(KeyEvent.VK_CONTROL, KeyEvent.VK_V);
+        final Clipboard clipboard = Clipboard.getSystemClipboard();
+        System.out.println(clipboard.getString());
     }
 
     /**
@@ -487,9 +495,9 @@ public class Controller {
      */
     public void actionEditingToolbar() {
         if (!checkMenuEditingToolbar.isSelected()) {
-            JavascriptCode.setCSSPropertyByClass(webEngine, "GOKB433CEHB", "visibility", "hidden");
+            JavascriptCode.setCSSPropertyByClass(webEngine, "GBVXONSAGB", "visibility", "hidden");
         } else {
-            JavascriptCode.setCSSPropertyByClass(webEngine, "GOKB433CEHB", "visibility", "visible");
+            JavascriptCode.setCSSPropertyByClass(webEngine, "GBVXONSAGB", "visibility", "visible");
         }
     }
 
@@ -645,12 +653,23 @@ public class Controller {
     }
 
     /**
-     * Click note information button, then clicks on show history link
+     * Click note information button, then clicks on the view history link
      */
     public void actionNoteHistory() {
         JavascriptCode.clickById(webEngine, "gwt-debug-NoteAttributes-infoButton");
-        JavascriptCode.clickByClass(webEngine, "GOKB433CEF.GOKB433CBD");
-        JavascriptCode.clickByClass(webEngine, "GOKB433CDF.GOKB433CBD.GOKB433CIEC");
+        webEngine.executeScript("var historyContainer = document.querySelectorAll(\"[id*=historyContainer]\")[0];" +
+                "var historyItems = historyContainer.querySelectorAll(\"[class*=G]\");" +
+                "for (var i = 0; i < historyItems.length; i++) {" +
+                "if (historyItems[i].innerHTML == \"View history\") {" +
+                "historyItems[i].click();" + "}}"
+        );
+
+        webEngine.executeScript("var dialogContainer = document.querySelectorAll(\"[id*=GlassModalDialog-footer]\")[0];" +
+                "var dialogItems = dialogContainer.querySelectorAll(\"[class*=G]\");" +
+                "for (var i = 0; i < dialogItems.length; i++) {" +
+                "if (dialogItems[i].innerHTML == \"Cancel\") {" +
+                "dialogItems[i].click();" + "}}"
+        );
     }
 
     /**
@@ -889,7 +908,23 @@ public class Controller {
      * Opens github repo url in user's default browser
      */
     public void actionCheckForUpdates() {
-        openLinkInUsersDefaultBrowser("https://github.com/milan102/ForeverNote");
+        if (!checkUpdates.isUpdateAvailable()) {
+            checkUpdates.showUpdateUnavailableDialog();
+        }
+    }
+
+    /**
+     * Opens release notes url in user's default browser
+     */
+    public void actionReleaseNotes() {
+        openLinkInUsersDefaultBrowser("https://github.com/milan102/ForeverNote#new-release-notes");
+    }
+
+    /**
+     * Opens contact developer url in user's default browser
+     */
+    public void actionContactDeveloper() {
+        openLinkInUsersDefaultBrowser("https://milanisaweso.me/index.php/contact/");
     }
 
     /**
@@ -903,18 +938,23 @@ public class Controller {
      * Opens link user's default browser
      * @param uri is the page to load
      */
-    private static void openLinkInUsersDefaultBrowser(String uri) {
-        try {
-            Desktop.getDesktop().browse(new URI(uri));
-        } catch (IOException | URISyntaxException e1 ) {
-            e1.printStackTrace();
+    public static void openLinkInUsersDefaultBrowser(String uri) {
+        if (Desktop.isDesktopSupported())
+        {
+            new Thread(() -> {
+                try {
+                    Desktop.getDesktop().browse(new URI(uri));
+                } catch (IOException | URISyntaxException e1) {
+                    e1.printStackTrace();
+                }
+            }).start();
         }
     }
 
     /**
      * Clicks all notes button
      */
-    private void actionAllNotes() {
+    public void actionAllNotes() {
         JavascriptCode.clickById(webEngine, "gwt-debug-Sidebar-notesButton" );
     }
 

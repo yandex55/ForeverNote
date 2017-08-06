@@ -32,7 +32,7 @@ public class JavascriptCode {
         webEngine.executeScript("document.querySelector(\"." + htmlClass + "\").click()");
     }
 
-    /**
+     /**
      * Applies CSS changes by id
      * @param webEngine is the browser object that the element is loaded in
      * @param htmlId is the element id as defined inside the HTML div tag
@@ -87,7 +87,7 @@ public class JavascriptCode {
      * Clicks on the create new notebook button
      */
     public static void clickCreateNewNotebookButton() {
-        clickByClass(Controller.getWebEngine(), "GOKB433CDTB");
+        Controller.getWebEngine().executeScript("document.querySelectorAll(\"[id*=createNotebookButton]\")[0].click()");
     }
 
     /**
@@ -170,6 +170,7 @@ public class JavascriptCode {
 
         try {
             if (file.exists()) {
+
                 Scanner reader = new Scanner(new FileInputStream("ForeverNoteUsername.ini"));
                 username = reader.nextLine();
                 Controller.getWebEngine().executeScript("document.getElementById(\"" + "username"
