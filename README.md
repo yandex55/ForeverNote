@@ -1,6 +1,6 @@
 # ForeverNote
 
-Open-source Evernote application for Linux, with ability to run on Windows & Mac. 
+Open-source Evernote application for Linux, with ability to run on Windows & Mac.
 
 Uses Evernote Web, created with JavaFX.
 
@@ -20,7 +20,7 @@ Uses Evernote Web, created with JavaFX.
 ## Known Issues
 - Pasting is buggy
 
-## Features 
+## Features
 - Most of the functionality of official Windows & Mac Evernote desktop clients
 - GUI similar to official clients
 - Stays in tray upon closing
@@ -36,4 +36,6 @@ Uses Evernote Web, created with JavaFX.
 
 
 ## Donations
-[![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=HL3P4UC2JKEAN&lc=US&item_name=Milan%27s%20Software&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)
+<p align="center">
+<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=HL3P4UC2JKEAN&lc=US&item_name=Milan%27s%20Software&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted"><img src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" alt="Donate"/></a>
+</p>
