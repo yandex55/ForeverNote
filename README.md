@@ -27,7 +27,7 @@ Uses Evernote Web, created with JavaFX.
 - Saves username for next login
 - And more...
 
-## Demo
+## Preview
 ![alt tag](https://github.com/milan102/ForeverNote/blob/master/gifs/forevernote.gif)
 
 ![alt tag](https://github.com/milan102/ForeverNote/blob/master/gifs/forevernote_sample1.png)
