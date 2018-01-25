@@ -6,7 +6,7 @@ Uses Evernote Web, created with JavaFX
 
 
 ## Current Version: 1.3
-####[Download Installers and Jar files here](https://sourceforge.net/projects/forevernote/files/)
+>[*Download installers and jar files here*](https://sourceforge.net/projects/forevernote/files/)
 
 ## New Release Notes
 - Fixed clicking on notebooks on the left panel and creating new notebooks
