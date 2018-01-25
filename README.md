@@ -1,12 +1,12 @@
 # ForeverNote
 
-Open-source Evernote application for Linux, with ability to run on Windows & Mac.
+Open-source Evernote application for Linux, with ability to run on Windows & Mac
 
-Uses Evernote Web, created with JavaFX.
+Uses Evernote Web, created with JavaFX
 
 
 ## Current Version: 1.3
-[Download Installers and Jar files here](https://sourceforge.net/projects/forevernote/files/)
+####[Download Installers and Jar files here](https://sourceforge.net/projects/forevernote/files/)
 
 ## New Release Notes
 - Fixed clicking on notebooks on the left panel and creating new notebooks
@@ -28,11 +28,11 @@ Uses Evernote Web, created with JavaFX.
 - And more...
 
 ## Preview
-![alt tag](https://github.com/milan102/ForeverNote/blob/master/gifs/forevernote.gif)
+![alt tag](https://github.com/milan102/ForeverNote/blob/master/preview/forevernote.gif)
 
-![alt tag](https://github.com/milan102/ForeverNote/blob/master/gifs/forevernote_sample1.png)
-![alt tag](https://github.com/milan102/ForeverNote/blob/master/gifs/forevernote_sample2.png)
-![alt tag](https://github.com/milan102/ForeverNote/blob/master/gifs/forevernote_sample3.png)
+![alt tag](https://github.com/milan102/ForeverNote/blob/master/preview/forevernote_sample1.png)
+![alt tag](https://github.com/milan102/ForeverNote/blob/master/preview/forevernote_sample2.png)
+![alt tag](https://github.com/milan102/ForeverNote/blob/master/preview/forevernote_sample3.png)
 
 
 ## Donations
