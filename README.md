@@ -30,9 +30,9 @@ Uses Evernote Web, created with JavaFX.
 ## Demo
 ![alt tag](https://github.com/milan102/ForeverNote/blob/master/gifs/forevernote.gif)
 
-![alt tag](https://github.com/milan102/ForeverNote/blob/master/gifs/forevnote_sample1.png)
-![alt tag](https://github.com/milan102/ForeverNote/blob/master/gifs/forevnote_sample2.png)
-![alt tag](https://github.com/milan102/ForeverNote/blob/master/gifs/forevnote_sample3.png)
+![alt tag](https://github.com/milan102/ForeverNote/blob/master/gifs/forevernote_sample1.png)
+![alt tag](https://github.com/milan102/ForeverNote/blob/master/gifs/forevernote_sample2.png)
+![alt tag](https://github.com/milan102/ForeverNote/blob/master/gifs/forevernote_sample3.png)
 
 
 ## Donations
